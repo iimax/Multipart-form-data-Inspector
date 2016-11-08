@@ -12,17 +12,14 @@ namespace MultipartFormDataInspector
     {
         private bool isReadOnly;
         private byte[] binaryContent;
-
+        private HTTPRequestHeaders _header;
         private MultipartViewer viewControl;
         private static Logger log = new Logger(true);
 
         public override void AddToTab(TabPage o)
         {
             o.Text = "Multipart/form-data";
-
-            //isReadOnly = true;
-
-            // create and add xml tree view as initial control
+            // create and add MultipartViewer as initial control
             viewControl = new MultipartViewer();
             viewControl.BackColor = CONFIG.colorDisabledEdit;
             viewControl.Dock = DockStyle.Fill;
@@ -91,16 +88,15 @@ namespace MultipartFormDataInspector
                 UpdateControlContent();
             }
         }
+        #endregion
 
         #region IRequestInspector2 members
 
         public HTTPRequestHeaders headers
         {
-            get { return null; }
-            set { }
+            get { return _header; }
+            set { _header = value; }
         }
-
-        #endregion
 
         #endregion
     }

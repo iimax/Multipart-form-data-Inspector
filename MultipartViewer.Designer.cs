@@ -31,10 +31,11 @@
             this.pnlTop = new System.Windows.Forms.Panel();
             this.lblMsg = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pnlBottom = new System.Windows.Forms.Panel();
-            this.btnCopy = new System.Windows.Forms.Button();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlBottom = new System.Windows.Forms.Panel();
+            this.btnCopy = new System.Windows.Forms.Button();
+            this.txtTemplate = new System.Windows.Forms.TextBox();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlBottom.SuspendLayout();
@@ -55,9 +56,8 @@
             this.lblMsg.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblMsg.Location = new System.Drawing.Point(0, 0);
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.Size = new System.Drawing.Size(95, 12);
+            this.lblMsg.Size = new System.Drawing.Size(0, 12);
             this.lblMsg.TabIndex = 0;
-            this.lblMsg.Text = "ContentType is:";
             // 
             // dataGridView1
             // 
@@ -71,26 +71,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 22);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(565, 362);
+            this.dataGridView1.Size = new System.Drawing.Size(565, 374);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // pnlBottom
-            // 
-            this.pnlBottom.Controls.Add(this.btnCopy);
-            this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom.Location = new System.Drawing.Point(0, 384);
-            this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(565, 44);
-            this.pnlBottom.TabIndex = 2;
-            // 
-            // btnCopy
-            // 
-            this.btnCopy.Location = new System.Drawing.Point(4, 11);
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(75, 23);
-            this.btnCopy.TabIndex = 0;
-            this.btnCopy.Text = "Copy";
-            this.btnCopy.UseVisualStyleBackColor = true;
             // 
             // colName
             // 
@@ -105,6 +87,34 @@
             this.colVal.Name = "colVal";
             this.colVal.Width = 300;
             // 
+            // pnlBottom
+            // 
+            this.pnlBottom.Controls.Add(this.txtTemplate);
+            this.pnlBottom.Controls.Add(this.btnCopy);
+            this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBottom.Location = new System.Drawing.Point(0, 396);
+            this.pnlBottom.Name = "pnlBottom";
+            this.pnlBottom.Size = new System.Drawing.Size(565, 32);
+            this.pnlBottom.TabIndex = 2;
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.Location = new System.Drawing.Point(331, 4);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(75, 23);
+            this.btnCopy.TabIndex = 0;
+            this.btnCopy.Text = "Copy";
+            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            // 
+            // txtTemplate
+            // 
+            this.txtTemplate.Location = new System.Drawing.Point(7, 6);
+            this.txtTemplate.Name = "txtTemplate";
+            this.txtTemplate.Size = new System.Drawing.Size(318, 21);
+            this.txtTemplate.TabIndex = 1;
+            this.txtTemplate.Text = "c1.AddPostVar(\"{0}\", hf.Item(\"{0}\").FieldValue) \'{1}";
+            // 
             // MultipartViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -118,6 +128,7 @@
             this.pnlTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlBottom.ResumeLayout(false);
+            this.pnlBottom.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -131,5 +142,6 @@
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colVal;
+        private System.Windows.Forms.TextBox txtTemplate;
     }
 }

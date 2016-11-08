@@ -15,10 +15,12 @@ namespace MultipartFormDataInspector
         {
             InitializeComponent();
         }
-
+        private List<PostParameter> _data = null;
         public void BindGrid(List<PostParameter> lst)
         {
+            _data = lst;
             this.dataGridView1.DataSource = lst;
+            DisplayError(string.Empty);
         }
 
         public void Clear()
@@ -33,6 +35,30 @@ namespace MultipartFormDataInspector
             this.lblMsg.Text = msg;
         }
 
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            if (_data != null)
+            {
+                string template = txtTemplate.Text;
+                StringBuilder sb = new StringBuilder();
+                foreach (var item in _data)
+                {
+                    sb.AppendFormat(template, item.Name, IgnoreValueOf(item.Name, item.Value));
+                    sb.AppendLine();
+                }
+                Clipboard.SetText(sb.ToString());
+                DisplayError("copied!");
+            }
+        }
+
+        private object IgnoreValueOf(string name, object val)
+        {
+            if (name == "__EVENTVALIDATION" || name == "__VIEWSTATE")
+            {
+                return string.Empty;
+            }
+            return val;
+        }
 
     }
 }
